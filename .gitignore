@@ -52,3 +52,9 @@ screenshots/
 
 # Misc caches
 .cache/
+
+# Artifacts
+*.png
+*.xlsx
+state.json
+loginSessionStorage.json
