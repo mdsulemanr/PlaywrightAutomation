@@ -17,7 +17,13 @@ export class OrdersPage extends BasePage {
       const rowOrderId = (await row.locator('th').textContent())?.trim() ?? '';
 
       if (orderId.includes(rowOrderId)) {
-        await row.locator('button:has-text("View")').click();
+        const viewBtn = row.locator('button:has-text("View")');
+
+        await Promise.all([
+          this.page.waitForURL(/order-details/i),
+          viewBtn.click(),
+        ]);
+
         return;
       }
     }

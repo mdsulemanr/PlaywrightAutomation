@@ -10,7 +10,7 @@ const EMAIL = process.env.ECOM_EMAIL ?? 'testertesty@gmail.com';
 const PASSWORD = process.env.ECOM_PASSWORD ?? 'Testertesty!1';
 
 const COUNTRY = process.env.ECOM_COUNTRY ?? 'Indonesia';
-const PRODUCT_ID = process.env.ECOM_PRODUCT_ID ?? '68a961719320a140fe1ca57c';
+const PRODUCT_ID = process.env.ECOM_PRODUCT_ID ?? '6964a1cbc941646b7a91786b';
 
 let apiContext: APIRequestContext;
 let token: string;
