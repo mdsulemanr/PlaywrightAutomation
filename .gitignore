@@ -58,3 +58,7 @@ screenshots/
 *.xlsx
 state.json
 loginSessionStorage.json
+# Allure reports
+allure-results/
+allure-report/
+
