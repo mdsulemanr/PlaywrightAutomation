@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { time } from 'console';
 
+// Run below tests parallel mode
+test.describe.configure({ mode: 'parallel' });
+
 test('Show/Hide Textbox', async ({ page }) => {
 
     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
@@ -42,105 +45,105 @@ test('alert validation - without dialog', async ({ page }) => {
 
 });
 
-test('alert validation - with dialog => dialog.accept', async ({ page }) => {
+// test('alert validation - with dialog => dialog.accept', async ({ page }) => {
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
-    page.on('dialog', dialog => dialog.accept());
-    await page.locator('#alertbtn').click();
-});
+//     page.on('dialog', dialog => dialog.accept());
+//     await page.locator('#alertbtn').click();
+// });
 
-test('alert validation - with async dialog', async ({ page }) => {
+// test('alert validation - with async dialog', async ({ page }) => {
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
-    await page.locator('#alertbtn').click();
-    page.on('dialog', async dialog => {
-        await dialog.accept();
-    });
-});
+//     await page.locator('#alertbtn').click();
+//     page.on('dialog', async dialog => {
+//         await dialog.accept();
+//     });
+// });
 
-test('popup validation - without dialog', async ({ page }) => {
+// test('popup validation - without dialog', async ({ page }) => {
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
-
-
-    // Clicking confirm button and dismissing the alert
-    await page.locator('#confirmbtn').click();
-
-});
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
 
-test('popup validation - dialog => dialog.dismiss', async ({ page }) => {
+//     // Clicking confirm button and dismissing the alert
+//     await page.locator('#confirmbtn').click();
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
-
-
-    // Clicking confirm button and dismissing the alert
-    page.on('dialog', dialog => dialog.dismiss());
-    await page.locator('#confirmbtn').click();
-
-});
-
-test('popup validation - async dialog.dismiss', async ({ page }) => {
-
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+// });
 
 
-    // Clicking confirm button and dismissing the alert
-    await page.locator('#confirmbtn').click();
-    page.on('dialog', async dialog => {
-        await dialog.dismiss();
-    });
+// test('popup validation - dialog => dialog.dismiss', async ({ page }) => {
 
-});
-
-test('popup validation - dialog => dialog.accept', async ({ page }) => {
-
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
 
-    // Clicking confirm button and accepting the alert
-    await page.locator('#confirmbtn').click();
-    page.on('dialog', dialog => dialog.accept());
+//     // Clicking confirm button and dismissing the alert
+//     page.on('dialog', dialog => dialog.dismiss());
+//     await page.locator('#confirmbtn').click();
 
-});
+// });
 
-test('popup validation - async dialog.accept', async ({ page }) => {
+// test('popup validation - async dialog.dismiss', async ({ page }) => {
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
 
-    // Clicking confirm button and dismissing the alert
-    await page.locator('#confirmbtn').click();
-    page.on('dialog', async dialog => {
-        await dialog.accept();
-    });
+//     // Clicking confirm button and dismissing the alert
+//     await page.locator('#confirmbtn').click();
+//     page.on('dialog', async dialog => {
+//         await dialog.dismiss();
+//     });
 
-});
+// });
 
-test.only('Mouse hover validation', async ({ page }) => {
+// test('popup validation - dialog => dialog.accept', async ({ page }) => {
 
-    const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
-    await page.goto(BASE_URL);
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
 
-    const mouseHoverBtn = page.locator('#mousehover');
-    const topBtn = page.locator('a[href="#top"]');
-    const reloadBtn = page.locator('a:text("Reload")');
 
-    await mouseHoverBtn.hover();
-    await expect(topBtn).toBeVisible();
-    await expect(reloadBtn).toBeVisible();
+//     // Clicking confirm button and accepting the alert
+//     await page.locator('#confirmbtn').click();
+//     page.on('dialog', dialog => dialog.accept());
 
-    await topBtn.click();
+// });
+
+// test('popup validation - async dialog.accept', async ({ page }) => {
+
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
+
+
+//     // Clicking confirm button and dismissing the alert
+//     await page.locator('#confirmbtn').click();
+//     page.on('dialog', async dialog => {
+//         await dialog.accept();
+//     });
+
+// });
+
+// test('Mouse hover validation', async ({ page }) => {
+
+//     const BASE_URL = 'https://rahulshettyacademy.com/AutomationPractice/';
+//     await page.goto(BASE_URL);
+
+//     const mouseHoverBtn = page.locator('#mousehover');
+//     const topBtn = page.locator('a[href="#top"]');
+//     const reloadBtn = page.locator('a:text("Reload")');
+
+//     await mouseHoverBtn.hover();
+//     await expect(topBtn).toBeVisible();
+//     await expect(reloadBtn).toBeVisible();
+
+//     await topBtn.click();
     
 
-    await page.waitForTimeout(1500);
-});
+//     await page.waitForTimeout(1500);
+// });

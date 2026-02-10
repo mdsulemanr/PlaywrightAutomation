@@ -16,8 +16,13 @@ export default defineConfig({
   // above work on CI only, below works everywhere
   retries: 1,
   workers: isCI ? 1 : undefined,
+  // workers: 1,
 
-  reporter: [['html', { open: 'never' }], ['list']],
+  // reporter: [['html', { open: 'never' }], ['list']],
+  reporter: [
+    ['list'],
+    ['allure-playwright'],
+  ],
 
   use: {
     // CI should generally be headless; local can be headed

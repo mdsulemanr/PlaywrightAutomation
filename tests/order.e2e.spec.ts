@@ -36,7 +36,7 @@ test.afterAll(async () => {
   await apiContext.dispose();
 });
 
-test('E2E: order is visible in My Orders and opens details', async ({ page }) => {
+test('@e2e E2E: order is visible in My Orders and opens details', async ({ page }) => {
   // set token before any app scripts run
   page.addInitScript((t) => window.localStorage.setItem('token', t), token);
 
