@@ -67,4 +67,26 @@ async goto() {
 
     return new OrdersPage(this.page);
   }
+
+  async verifyProductVisible(productName: string): Promise<boolean> {
+    // Wait for products to load
+    const productCards = this.page.locator('.card-body');
+    await expect(productCards.first()).toBeVisible({ timeout: 10_000 });
+
+    // Get all product titles and check if the desired product is present
+    const productTitles = await productCards.locator('h5 > b').allTextContents();
+    const isVisible = productTitles.some(title => 
+      title.toLowerCase().includes(productName.toLowerCase())
+    );
+
+    if (isVisible) {
+      // Verify by checking the locator with specific text
+      const productLocator = this.page.locator('.card-body', {
+        has: this.page.locator(`h5 > b:has-text("${productName}")`)
+      });
+      await expect(productLocator.first()).toBeVisible();
+    }
+
+    return isVisible;
+  }
 }
